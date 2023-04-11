@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker 
+
+before_install:
+  - docker build -t haronka/docker-react-learn -f Dockerfile.dev .
+
+script:
+  - docker run haronka/docker-react-learn npm run test -- --coverage
