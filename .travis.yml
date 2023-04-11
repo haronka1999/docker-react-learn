@@ -7,3 +7,17 @@ before_install:
 
 script:
   - docker run haronka/docker-react-learn npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-2"
+  app: "docker-react-learn"
+  env: "Dockerreactlearn-env"
+  bucket_name: "elasticbeanstalk-eu-west-2-486901152190"
+  bucket_path: "docker-react-learn"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+    
